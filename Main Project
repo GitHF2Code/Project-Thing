@@ -1,0 +1,550 @@
+#Both project things combined
+#write name above part in green
+
+#Hannah F
+import random
+import turtle
+import time
+
+global health
+global strength
+global luck
+
+# Class Choices
+def choose():
+   global classes
+   global class_
+   classes = ['Bard', 'Swordsman', 'Warrior']
+   print("Type 1 for Bard, 2 for Swordsman, or 3 for Warrior")
+   print(classes)
+
+# Different game paths
+
+#Inroduction
+choices = True
+while choices == True:
+  userName1 = str(input("Welcome to [gamename]! Please enter your name: "))
+  userConfirm = str(input("Is this your name? Type 'Yes' to confirm: "))
+  if userConfirm == str("Yes"):
+    choices == True
+    break
+print("Welcome " + userName1 + "!")
+intimidation = False
+sing = False
+influence = False
+classDecision = int(input(choose()))
+if classDecision == 1:
+  print("You have chosen the " + classes[0] + " class!")
+  class_ = 'Bard'
+  health = 25
+  strength = 20
+  luck =15
+  sing = True
+  coins = 10
+if classDecision == 2:
+  print("You have chosen the " + classes[1] + " class!")
+  class_ = 'Royalty'
+  health = 20
+  strength = 30
+  luck =10
+  influence = True
+  coins = 30
+if classDecision == 3:
+  print("You have chosen the " + classes[2] + " class!")
+  class_ = 'Warrior'
+  health = 30
+  strength = 30
+  luck =0
+  intimidation = True
+  coins = 20
+print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck) + ", Coins:" + str(coins))
+userStats = userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck) + ", Coins:" + str(coins)
+print(" ")
+
+#Inovcation of the Muse
+# Call to adventure
+print("Welcome brave adventurer!")
+print("You have been called by the Wizard Words the Wise to defeat the evil King Kilometer")
+choice = input("Do you choose to accept?")
+if choice == "Yes" or "yes":
+  print("Then head off on your journey, brave adventurer!")
+else:
+  print("You scurry off in shame and dishonor.")
+  exit()
+
+print(" " )
+# Different game paths
+conquerChoice = int(input("You now must choose to explore the city or the plains. Choose by typing 1 for city and 2 for plains: "))
+if conquerChoice == 1:
+  print("heading to the city...")
+  print("You have gained health from being in the clean city!")
+  health += 5
+  print("Health: " + str(health))
+elif conquerChoice == 2:
+  print("travelling to the plains...")
+  print("You have gained strength on your journey to the plains!")
+  strength += 5
+  print("Strength: " + str(strength))
+else:
+  print("You pathetically back down from the journey")
+  exit()
+#Nobleman Numbers
+print(" ")
+
+print("Nobleman Numbers comes up to you offering a potion if you can guess if they're thinking of the number 1 or 2")
+number = random.randint(1,2)
+decisionsNumber = int(input("What do you think it is?: "))
+if decisionsNumber == number:
+  print("You guess correctly, gain luck and health!")
+  luck += 5
+  health += 5
+  print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck))
+elif decisionsNumber != number and intimidation == True:
+  print("The person looks antigonistic, but you glare and they run off in panic.")
+if decisionsNumber != number and intimidation != True:
+  print("You guess incorrectly, and the person throws the potion in your face!")
+  health -= 5
+  luck -= 5
+  print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck))
+print("...")
+#Prince Phonics
+print(" " )
+print("Now, Prince Phonics approaches you, and tells you to guess what vowel he's thinking of")
+number = random.randint(1,6)
+if number == 1:
+  letter = 'a'
+elif number == 2:
+  letter = 'e'
+elif number == 3:
+  letter = 'i'
+elif number == 4:
+  letter = 'o'
+elif number == 5:
+  letter = 'u'
+elif number == 6:
+  letter = 'sometimes y'
+decisionsVowel = str(input("a, e, i, o, u, or  sometimes y? : "))
+if decisionsVowel == letter:
+  print("You guess correctly, gain luck and strength!")
+  strength += 5
+  luck += 10
+  print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck))
+elif decisionsVowel != letter and influence == True:
+  print("The Prince gets angry but his eyes widen as he realises who you are and he runs off.")
+else:
+  print("Incorrect, the prince fires a barrage of consonants at you!")
+  health -= 10
+  luck -= 5
+  print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck))
+#Duke of Dice
+print(" " )
+print("The Duke of Dice approaches you, and tells you to guess if he will roll even or odd. If you guess correctly once, he will give you luck and health, if you guess twice he will also give you strength.")
+print("If you get both guesses wrong, he will throw you in prison!")
+diceNumber = random.randint(1,6)
+decisionsDice1 = str(input("So choose 'odd' or 'even' : "))
+if decisionsDice1 == 'odd':
+  decisionsDiceNumber1 = 1
+elif decisionsDice1 == 'even':
+  decisionsDiceNumber1 = 0
+else:
+  print("You scurry away from the challenge to return home")
+  exit()
+if decisionsDiceNumber1 == (diceNumber % 2):
+  print("Dice Number: " + str(diceNumber))
+  print("You guess correctly the first time!")
+  health += 10
+  luck += 7
+  diceNumber = random.randint(1,6)
+  print("Second attempt...")
+  decisionsDice2 = str(input("So choose 'odd' or 'even' : "))
+  if decisionsDice2 == 'odd':
+    decisionsDiceNumber2 = 1
+  elif decisionsDice2 == 'even':
+    decisionsDiceNumber2 = 0
+  else:
+    print("You scurry away from the challenge to return home")
+    exit()
+  diceDivisibility2 = diceNumber % 2
+  if decisionsDiceNumber2 == (diceDivisibility2):
+    print("Dice Number: " + str(diceNumber))
+    print("You guess correctly the second time!")
+    strength += 10
+    luck += 8
+  else:
+    print("Dice Number: " + str(diceNumber))
+    print("You guess incorrectly the second time!")
+else:
+  print("Dice Number: " + str(diceNumber))
+  print("You guess incorrectly the first time!")
+  luck -= 2
+  diceNumber = random.randint(1,6)
+  print("Second attempt...")
+  decisionsDice2 = str(input("So choose 'odd' or 'even' : "))
+  if decisionsDice2 == 'odd':
+    decisionsDiceNumber2 = 1
+  elif decisionsDice2 == 'even':
+    decisionsDiceNumber2 = 0
+  else:
+    print("You scurry away from the challenge to return home")
+    exit()
+  diceDivisibility = diceNumber % 2
+  if decisionsDiceNumber2 ==(diceDivisibility):
+    print("Dice Number: " + str(diceNumber))
+    print("You guess correctly the second time!")
+    health += 10
+    luck += 7
+  else:
+    print("Dice Number: " + str(diceNumber))
+    print("You guess incorrectly again!")
+    luck -= 5
+    print("You are thrown in prison")
+    if sing == True:
+      print("In your sorrow, you sing ballads of sadness.")
+      print("The guard seems to be moved, and he releases you.")
+      print("You have been given a second chance!")
+    else:
+      exit()
+print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck))
+print(" ")
+
+# Fortune Teller (Map for Path?)
+print("An old man hobbles in front of you.")
+print("...")
+print("He holds out a hand and you realise he's asking for coins")
+choice = input("Do you want to give him 10 of your coins?")
+if choice == "Yes" or "yes":
+  print("You give him ten coins.")
+  int(coins)
+  coins = coins - 10
+  print("In a gruff voice, he tells you...")
+  if sing == True:
+    print('"Take the right path"')
+    print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck) + ", coins: " + str(coins))
+  else:
+    print('"Take the left path"')
+    print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck) + ", coins: " + str(coins))
+else:
+  print("He nods, and disappears")
+
+print("You continue on your journey")
+print(" " )
+print(" " )
+
+#The Path
+print("In front of you, there is a split in the road.")
+choice = 0
+choice = int(input("Do you head left(1) or right(2)?"))
+if choice == 1:
+  print("You head left, and you see a small shop in front of you.")
+  choice = int(input("Do you want to enter? (Yes = 1, No = 2)"))
+  if choice == 1:
+    print("You enter the shop and see a short man at the counter")
+    print('He gives a small grin and says, "Welcome ' + userName1 + '! I have been waiting for you.'  )
+    if coins <= 10 and coins > 0:
+      print("He quickly takes all of your coins and waves his hand")
+      print("You feel renewed. Gain strength and health.")
+      strength += 5
+      health += 5
+      coins = 0
+      print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck) + ", coins: " + str(coins))
+    elif coins > 10:
+      print("He takes 10 of your coins and waves his hand")
+      print("You feel renewed. Gain strength and health.")
+      strength += 5
+      health += 5
+      coins -= 10
+      print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck) + ", coins: " + str(coins))
+    else:
+      print("He frowns. You have no money to offer him.")
+      print("You are kicked out of the shop")
+if choice == 2:
+  print("You head right, and you find a stray potion on the ground")
+  choice = int(input("Do you want to drink it? (Yes = 1, No = 2)"))
+  if choice == 1:
+    print("You feel woozy, and as you black out, the last thing you see is a bard in front of you")
+    if coins == 0:
+      print("...")
+      print("As you wake up, you see a note in front of you")
+      print('The note reads "Sorry about the knock out potion, here is a little gift to make up for it"')
+      print("You finish reading the note and feel more refreshed")
+      strength += 10
+      health += 5
+      print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck) + ", coins: " + str(coins))
+    else:
+      print("...")
+      print("You wake up and notice your coin pouch on the floor")
+      print("You were robbed of all your coins")
+      coins = 0
+      print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck) + ", coins: " + str(coins))
+  else:
+    print("You walk past it, and behind you, you just catch the sound of someone's dissapointment")
+      
+print("You continue on your journey, getting closer to the giant castle.")
+print("temp end. dunno what to put after this")
+
+#jerren g
+
+time.sleep(3)
+
+# Final Battle: Warmup
+print("You are going to enter into the castle to kill King Kilometer")
+print(".")
+ready = input("Are you ready? 'Yes' or 'No' :")
+print("ok :)")
+print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck))
+enemyHealth = 10
+enemyStrength = 10
+enemyLuck =0
+print("The king sends his guard to attack!")
+print("Guard- Health: " + str(enemyHealth) + ", Strength: " + str(enemyStrength) + ", Luck: " + str(enemyLuck))
+playerAttack = strength // 5 + (luck // 5) 
+enemyAttack = enemyStrength // 5 + (enemyLuck // 5)
+while health >= 0 or enemyHealth >= 0:
+  playerBattleChoice = str(input("Attack or evade? Type 'a' for attack or 'e' for evade"))
+  if playerBattleChoice == 'a':
+    print("You attack the guard and deal " + str(playerAttack) + " damage!")
+    enemyHealth = enemyHealth - playerAttack
+    print("Guard- Health: " + str(enemyHealth) + ", Strength: " + str(enemyStrength) + ", Luck: " + str(enemyLuck))
+    print("Guard attacks and deals " + str(enemyAttack) + " damage!")
+    health = health - enemyAttack
+    print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck))
+    time.sleep(1)
+  elif playerBattleChoice == 'e':
+    print("You dodge the guard and deal " + str(playerAttack // 5)  + " damage!")
+    enemyHealth = enemyHealth - (playerAttack // 5)
+    print("Guard- Health: " + str(enemyHealth) + ", Strength: " + str(enemyStrength) + ", Luck: " + str(enemyLuck))
+    print("Guard misses and deals only 1 damage!")
+    health = health - 1
+    print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck))
+    time.sleep(1)
+  else:
+    print("The guard catches you off guard and guards the king by killing you with the help of another guard!")
+    print("Game Over!")
+    time.sleep(1)
+    print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck))
+    exit()
+  if enemyHealth <= 0:
+    print("You have defeated the guard!")
+    print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck))
+    break
+  if health <= 0:
+    print("The guard has defeated you!")
+    print("Game over!")
+    exit()
+weaponFoundNumber = random.randint(1,3)
+armorFoundNumber = random.randint(1,3)
+weapon = 'none'
+armor = 'none'
+weaponAddedDamage = 0
+armorAddedDefense = 0
+if weaponFoundNumber == 1:
+  weapon = "Wooden Staff"
+  weaponAddedDamage = 1
+if weaponFoundNumber == 2:
+  weapon = "Old Bronze Sword"
+  weaponAddedDamage = 2
+if weaponFoundNumber == 3:
+  weapon = "Knight's Blade"
+  weaponAddedDamage = 3
+print("You take a weapon from the guard!")
+print(weapon + ": +" + str(weaponAddedDamage) + " added damage")
+time.sleep(1)
+armorAddedDefense = 0
+if armorFoundNumber == 1:
+  armor = "Leather Garments"
+  armorAddedDefense = 1
+if armorFoundNumber == 2:
+  armor = "Old Bronze Armour"
+  armorAddedDefense = 2
+if armorFoundNumber == 3:
+  armor = "Knight's armour"
+  armorAddedDefense = 3
+print("You take armour from the guard!")
+print(armor + ": +" + str(armorAddedDefense) + " added defense")
+print(".")
+time.sleep(1)
+print(".") 
+time.sleep(1)
+print(".") 
+time.sleep(2)
+print("Now, King Kilometer will deal with you himself!")
+
+time.sleep(3)
+
+#Final Battle: Player vs. King Kilometer
+kingHealth = 37 #64
+kingStrength =  40 #64
+kingLuck =  6 #6
+global chaosFactor
+chaosFactor = int(input("Pick a Chaos Factor number between 1 and 15 (10 is recommended for normal mode):"))
+if chaosFactor > 15 or chaosFactor < 1:
+  print("You disappear from existence, and King Kilometer rules for eternity...")
+  print("Game Over!")
+  exit()
+global kingLuckUp
+kingLuckUp = (kingLuck + chaosFactor)
+#global kingLuckDown
+#kingLuckDown = (kingLuck - chaosFactor)
+global luckUp 
+luckUp = (luck + chaosFactor)
+#global luckDown 
+#luckDown = (luck - chaosFactor)
+luckCrit = random.randint(1,(luckUp))
+kingCrit = random.randint(1,(kingLuckUp))
+playerAttack = strength // 5 + (luck // luckCrit) 
+kingAttack = kingStrength // 5 + (kingLuck // kingCrit)
+print(".")
+print("King Kilometer- Health: " + str(kingHealth) + ", Strength: " + str(kingStrength) + ", Luck: " + str(kingLuck))
+print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck))
+print(weapon + ": +" + str(weaponAddedDamage) + " added damage")
+print(armor + ": +" + str(armorAddedDefense) + " added defense")
+print(".")
+time.sleep(3)
+while health >= 0 or kingHealth >= 0:
+  playerFinaleChoice = str(input("Attack, Evade or Ambush(risky)? Type 'a' for attack, 'e' for evade, or 'd' for ambush :"))
+  if playerFinaleChoice == 'a':
+    luckCrit = random.randint(1,(luckUp))
+    kingCrit = random.randint(1,(kingLuckUp))
+    playerAttack = (strength // 5) + (luck // luckCrit) + (weaponAddedDamage)
+    kingAttack = (kingStrength // 5) + (kingLuck // kingCrit) - (armorAddedDefense)
+    print("You attack King Kilometer and deal " + str(playerAttack) + " damage!")
+    kingHealth -= playerAttack
+    print("Added Critical Luck damage: " + str(luck // luckCrit))
+    print(".")
+    print("King Kilometer- Health: " + str(kingHealth) + ", Strength: " + str(kingStrength) + ", Luck: " + str(kingLuck))
+    print("King Kilometer attacks and deals " + str(kingAttack) + " damage!")
+    health -= kingAttack
+    print("Added Critical Luck damage: " + str(kingLuck // kingCrit))
+    print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck))
+    print(".")
+    time.sleep(1)
+  elif playerFinaleChoice == 'e':
+    luckCrit = random.randint(1,(kingLuckUp))
+    kingCrit = random.randint(1,(luckUp))
+    if luckCrit == 0:
+      luckCrit == 1
+    if kingCrit == 0:
+      kingCrit == 1
+    playerAttack = (strength // 5) + (luck // luckCrit) + (weaponAddedDamage)
+    kingAttack = (kingStrength // 5) + (kingLuck // kingCrit) - (armorAddedDefense)
+    defenseCounter = playerAttack // 5
+    kingWeakenedAttack = (kingAttack // (armorAddedDefense + 0.5))
+    print("You evade the Kilometer King's attack and end up dealing " + str(defenseCounter) + " damage!")
+    kingHealth -= defenseCounter
+    print("King Kilometer- Health: " + str(kingHealth) + ", Strength: " + str(kingStrength) + ", Luck: " + str(kingLuck))
+    print(".")
+    time.sleep(2)
+    print("King Kilometer misses and only deals " + str(kingWeakenedAttack) + " attack damage!")
+    health -= kingWeakenedAttack
+    print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck))
+    time.sleep(1)
+  elif playerFinaleChoice == 'd':
+    ambushSuccess = random.randint(0,4)
+    ambushRetaliation = random.randint(-6,17)
+    if ambushRetaliation == 0:
+      ambushRetaliation == 1
+    playerAttack = (strength // 5) + (luck // luckCrit) + (weaponAddedDamage)
+    kingAttack = (kingStrength // 5) + (kingLuck // kingCrit) - (armorAddedDefense)
+    fullRetaliationDamage = kingAttack + ambushRetaliation
+    fullAmbushDamage = playerAttack * ambushSuccess
+    print("Your ambush dealed " + str(ambushSuccess) + " times the damage!")
+    print("Total of " + str(fullAmbushDamage) + " damage!")
+    kingHealth -= fullAmbushDamage
+    print("King Kilometer- Health: " + str(kingHealth) + ", Strength: " + str(kingStrength) + ", Luck: " + str(kingLuck))
+    time.sleep(1)
+    print("Vulnerable, King Kilometer retaliates and deals " + str(fullRetaliationDamage) + " damage!")
+    health -= fullRetaliationDamage
+    print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck))
+  else:
+    print("Distracted, you are immediately desintigrated by King Kilometer")
+    print("Luck : " + str(luck))
+    print("Game Over!")
+    exit()
+  if kingHealth <= 0 and health > 0:
+    print("You have defeated the King Kilometer!")
+    print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck))
+    break
+  if health <= 0 and kingHealth > 0:
+    print("King Kilometer has defeated you!")
+    print("Luck : " + str(luck))
+    print("Game over!")
+    exit()
+  if health <= 0 and kingHealth <= 0:
+    print("You both defeat each other!!")
+    print("Game Over?")
+    print("your story really isn't worth following anymore")
+    print("Luck : " + str(luck))
+    exit()
+
+# Aftermath...
+print(".")
+time.sleep(1)
+print(".")
+time.sleep(1)
+print(".")
+time.sleep(3)
+print("well, you Win")
+truthChoice = input("Do you not decide to not lose? 'yes' ; 'no' :")
+if truthChoice == 'yes':
+  health = 1
+  strength = 1
+  luck = 0
+  print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck))
+  kingHealth = 100
+  kingStrength = 100
+  kingLuck = 100
+  print("Lord Killometer- Health: " + str(kingHealth) + ", Strength: " + str(kingStrength) + ", Luck: " + str(kingLuck))
+  time.sleep(1)
+  print("Lord Killometer: 'You thought you could defeat me?'")
+  time.sleep(2)
+  print("Lord Killometer: 'You really think your training prepared you?'")
+  time.sleep(2)
+  print("Lord Killometer: 'This isn't the first time someone has tried to take the throne")
+  health = -2142
+  strength = -9345
+  luck = -83274
+  print("Lord Killometer strikes you down easily")
+  print("Game OvErrrrrrr____--=[}|][\[\{")
+  print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck))
+  time.sleep(10)
+  print("? :Do you want to go back?")
+  time.sleep(3)
+  print("Did you make the wrong choices?")
+  time.sleep(1)
+  print("A question for another to answer, because you, " + userName1 + ", have already had your chance")
+  time.sleep(2)
+  print("Maybe all you want is a happy ending, even if it's not the real ending")
+  time.sleep(2)
+  print("Kil O'Meter: But I still rule these lands")
+  print("I'll be waiting for the next foolish traveller")
+  time.sleep(1)
+  print("time.sleep(99999999)")
+  print("exit()")
+  exit()
+elif truthChoice == 'no':
+  print("You can now overtake Kilometer's Kingdom!")
+  health = 100
+  strength = 100
+  luck = 100
+  print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck))
+  time.sleep(1)
+  print("Congratulations!")
+  colors = ['red', 'orange', 'blue', 'green']
+  turtle.width(10)
+  turtle.speed(20)
+  length = 5
+  for count in range(100):
+    color = random.choice(colors)
+    turtle.forward(length)
+    turtle.right(170)
+    turtle.color(color)
+    length = length + 5
+else:
+  print("Now you don't know what to do, so you give up the kingdom to someone else...")
+  print("You go back to living a normal life")
+  print("Time to go home now")
+  time.sleep(2)
+  print(userName1 + "- Health: " + str(health) + ", Strength: " + str(strength) + ", Luck: " + str(luck))
+  print("Game Over!")
+  exit()
+  
